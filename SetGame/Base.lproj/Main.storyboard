@@ -4,7 +4,7 @@
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="3747"/>
     </dependencies>
     <scenes>
-        <!--View Controller - Game History-->
+        <!--View Controller - Match History-->
         <scene sceneID="Wlv-Ol-dst">
             <objects>
                 <viewController id="YVH-8V-pdG" sceneMemberID="viewController">
@@ -15,9 +15,17 @@
                     <view key="view" contentMode="scaleToFill" id="gSY-MT-VQK">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Match history goes here" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jrk-HF-u8s">
+                                <rect key="frame" x="68" y="273" width="185" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
-                    <navigationItem key="navigationItem" title="Game History" id="1Yx-g8-J1j"/>
+                    <navigationItem key="navigationItem" title="Match History" id="1Yx-g8-J1j"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="bjA-cY-wHg" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
