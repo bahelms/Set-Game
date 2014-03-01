@@ -25,7 +25,14 @@
 
 
 - (SETGame *)createGame {
-    return [[SETGame all]]
+    return [[SETGame alloc] initWithCardCount:[self.cardButtons count]
+                                    usingDeck:[SETDeck deck]];
+}
+
+
+#pragma mark - Actions
+
+- (IBAction)touchCardButton:(UIButton *)sender {
 }
 
 
@@ -40,12 +47,6 @@
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
-}
-
-
-#pragma mark - Actions
-
-- (IBAction)touchCardButton:(UIButton *)sender {
 }
 
 @end
