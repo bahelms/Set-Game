@@ -8,8 +8,19 @@
 #import "SETDeck.h"
 #import "SETCard.h"
 
-@implementation SETDeck
+@interface SETDeck ()
+@property (nonatomic) NSMutableArray *cards;
+@end
 
+@implementation SETDeck
+#pragma mark - Init
+
+// Designated init
++ (SETDeck *)deck {
+    return [[self alloc] init];
+}
+
+            
 - (instancetype)init {
     if (self = [super init]) {
         for (int shape=0; shape < 3; shape++) {
@@ -21,12 +32,39 @@
                         card.alpha = alpha;
                         card.color = color;
                         card.number = number;
+                        [self addCard:card];
                     }
                 }
             }
         }
     }
     return self;
+}
+
+
+- (NSMutableArray *)cards {
+    if (!_cards) _cards = [[NSMutableArray alloc] init];
+    return _cards;
+}
+
+
+#pragma mark - Instance methods
+
+- (void)addCard:(SETCard *)card {
+    [self.cards addObject:card];
+}
+
+
+- (SETCard *)drawRandomCard {
+    SETCard *randomCard = nil;
+    
+    if ([self.cards count]) {
+        unsigned i = arc4random() % [self.cards count];
+        NSLog(@"random card index: %u", i);
+        randomCard = self.cards[i];
+        [self.cards removeObjectAtIndex:i];
+    }
+    return randomCard;
 }
 
 @end
