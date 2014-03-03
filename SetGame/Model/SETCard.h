@@ -9,9 +9,13 @@
 
 @interface SETCard : NSObject
 
-@property (nonatomic) int shape;
-@property (nonatomic) int alpha;
-@property (nonatomic) int number;
-@property (nonatomic) int color;
+@property (nonatomic) NSInteger shape;
+@property (nonatomic) NSInteger alpha;
+@property (nonatomic) NSInteger number;
+@property (nonatomic) NSInteger color;
+@property (nonatomic, getter=isMatched) BOOL matched;
+@property (nonatomic, getter=isChosen) BOOL chosen;
+
+- (NSInteger)match:(NSArray *)otherCards;
 
 @end

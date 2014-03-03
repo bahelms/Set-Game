@@ -30,17 +30,41 @@
 }
 
 
+- (void)dealCards {
+    for (UIButton *cardButton in self.cardButtons) {
+        int cardButtonIndex = [self.cardButtons indexOfObject:cardButton];
+        SETCard *card = [self.game cardAtIndex:cardButtonIndex];
+        // Draw stuff
+        
+    }
+}
+
+
 #pragma mark - Actions
 
 - (IBAction)touchCardButton:(UIButton *)sender {
+    int chosenButtonIndex = [self.cardButtons indexOfObject:sender];
+    [self.game chooseCardAtIndex:chosenButtonIndex];
+    [self updateUI];
 }
 
 
 #pragma mark - View Stuff
 
+- (void)updateUI {
+    for (UIButton *cardButton in self.cardButtons) {
+        int cardButtonIndex = [self.cardButtons indexOfObject:cardButton];
+        SETCard *card = [self.game cardAtIndex:cardButtonIndex];
+        // Draw stuff
+        
+        self.scoreLabel.text = [NSString stringWithFormat:@"Score: %lu", (long)self.game.score];
+    }
+}
+
+
 - (void)viewDidLoad {
     [super viewDidLoad];
-	// Do any additional setup after loading the view, typically from a nib.
+    [self dealCards];
 }
 
 

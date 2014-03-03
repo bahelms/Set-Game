@@ -11,8 +11,12 @@
 
 @interface SETGame : NSObject
 
+@property (nonatomic) NSInteger score;
+
 // Designated init
 - (instancetype)initWithCardCount:(NSUInteger)count
                         usingDeck:(SETDeck *)deck;
+- (SETCard *)cardAtIndex:(NSInteger)index;
+- (void)chooseCardAtIndex:(NSInteger)index;
 
 @end

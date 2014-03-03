@@ -9,4 +9,9 @@
 
 @implementation SETCard
 
+- (NSInteger)match:(NSArray *)otherCards {
+    NSInteger score = 0;
+    return score;
+}
+
 @end
