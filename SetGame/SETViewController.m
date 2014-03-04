@@ -13,10 +13,38 @@
 @property (weak, nonatomic) IBOutlet UILabel *matchAlerts;
 @property (weak, nonatomic) IBOutlet UILabel *scoreLabel;
 @property (nonatomic) SETGame *game;
+
+@property (nonatomic, readonly) NSArray *shapes;
+@property (nonatomic, readonly) NSArray *alphas;
+@property (nonatomic, readonly) NSArray *colors;
 @end
 
+
 @implementation SETViewController
+
 #pragma mark - Initialization
+
+@synthesize shapes = _shapes;
+@synthesize alphas = _alphas;
+@synthesize colors = _colors;
+
+- (NSArray *)shapes {
+    if (!_shapes) _shapes = @[@"●", @"◼︎", @"▲"];
+    return _shapes;
+}
+
+
+- (NSArray *)alphas {
+    if (!_alphas) _alphas = @[@0.25, @0.5, @1];
+    return _alphas;
+}
+
+
+- (NSArray *)colors {
+    if (!_colors) _colors = @[[UIColor blueColor], [UIColor greenColor], [UIColor redColor]];
+    return _colors;
+}
+
 
 - (SETGame *)game {
     if (!_game) _game = [self createGame];
@@ -27,16 +55,6 @@
 - (SETGame *)createGame {
     return [[SETGame alloc] initWithCardCount:[self.cardButtons count]
                                     usingDeck:[SETDeck deck]];
-}
-
-
-- (void)dealCards {
-    for (UIButton *cardButton in self.cardButtons) {
-        int cardButtonIndex = [self.cardButtons indexOfObject:cardButton];
-        SETCard *card = [self.game cardAtIndex:cardButtonIndex];
-        // Draw stuff
-        
-    }
 }
 
 
@@ -51,20 +69,40 @@
 
 #pragma mark - View Stuff
 
-- (void)updateUI {
+- (void)drawCards {
     for (UIButton *cardButton in self.cardButtons) {
         int cardButtonIndex = [self.cardButtons indexOfObject:cardButton];
         SETCard *card = [self.game cardAtIndex:cardButtonIndex];
-        // Draw stuff
-        
-        self.scoreLabel.text = [NSString stringWithFormat:@"Score: %lu", (long)self.game.score];
+        [self setButtonTitleFor:cardButton with:card];
     }
 }
 
 
+- (void)setButtonTitleFor:(UIButton *)cardButton with:(SETCard *)card {
+    NSMutableString *str = [[NSMutableString alloc] init];
+    for (NSInteger i = card.number+1; i > 0; i--) {
+        [str appendString:self.shapes[card.shape]];
+    }
+    
+    NSDictionary *attrs = @{
+        NSFontAttributeName: [UIFont preferredFontForTextStyle:UIFontTextStyleHeadline],
+        NSForegroundColorAttributeName: self.colors[card.color]
+    };
+    NSMutableAttributedString *title = [[NSMutableAttributedString alloc] initWithString:str attributes:attrs];
+    [title addAttributes:attrs range:NSMakeRange(0, card.number+1)];
+    [cardButton setAttributedTitle:title forState:UIControlStateNormal];
+}
+
+
+- (void)updateUI {
+    [self drawCards];
+    self.scoreLabel.text = [NSString stringWithFormat:@"Score: %lu", (long)self.game.score];
+}
+
+             
 - (void)viewDidLoad {
     [super viewDidLoad];
-    [self dealCards];
+    [self drawCards];
 }
 
 
