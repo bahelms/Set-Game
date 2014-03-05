@@ -60,7 +60,6 @@
     
     if ([self.cards count]) {
         unsigned i = arc4random() % [self.cards count];
-        NSLog(@"random card index: %u", i);
         randomCard = self.cards[i];
         [self.cards removeObjectAtIndex:i];
     }

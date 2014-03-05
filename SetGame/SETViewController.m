@@ -71,9 +71,10 @@
 
 - (void)drawCards {
     for (UIButton *cardButton in self.cardButtons) {
-        int cardButtonIndex = [self.cardButtons indexOfObject:cardButton];
+        NSInteger cardButtonIndex = [self.cardButtons indexOfObject:cardButton];
         SETCard *card = [self.game cardAtIndex:cardButtonIndex];
         [self setButtonTitleFor:cardButton with:card];
+        [cardButton setAlpha:[self.alphas[card.alpha] floatValue]];
     }
 }
 
@@ -84,9 +85,11 @@
         [str appendString:self.shapes[card.shape]];
     }
     
+    CGFloat alpha = [self.colors[card.alpha] floatValue];
+    UIColor *color = self.colors[card.color];
     NSDictionary *attrs = @{
         NSFontAttributeName: [UIFont preferredFontForTextStyle:UIFontTextStyleHeadline],
-        NSForegroundColorAttributeName: self.colors[card.color]
+        NSForegroundColorAttributeName: [color colorWithAlphaComponent:alpha]
     };
     NSMutableAttributedString *title = [[NSMutableAttributedString alloc] initWithString:str attributes:attrs];
     [title addAttributes:attrs range:NSMakeRange(0, card.number+1)];

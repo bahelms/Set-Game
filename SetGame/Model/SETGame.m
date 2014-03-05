@@ -12,6 +12,8 @@
 @end
 
 @implementation SETGame
+
+#pragma mark - Init
 static const int MATCH_LIMIT = 2;
 static const int MISMATCH_PENALTY = 2;
 static const int COST_TO_CHOOSE = 1;
@@ -29,6 +31,14 @@ static const int COST_TO_CHOOSE = 1;
     return self;
 }
 
+
+- (NSMutableArray *)cards {
+    if (!_cards) _cards = [[NSMutableArray alloc] init];
+    return _cards;
+}
+
+
+#pragma mark - Methods
 
 - (SETCard *)cardAtIndex:(NSInteger)index {
     return self.cards[index];
