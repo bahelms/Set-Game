@@ -85,14 +85,15 @@
         [str appendString:self.shapes[card.shape]];
     }
     
-    CGFloat alpha = [self.colors[card.alpha] floatValue];
+    CGFloat alpha = [self.alphas[card.alpha] floatValue];
     UIColor *color = self.colors[card.color];
     NSDictionary *attrs = @{
         NSFontAttributeName: [UIFont preferredFontForTextStyle:UIFontTextStyleHeadline],
         NSForegroundColorAttributeName: [color colorWithAlphaComponent:alpha]
+        //NSBackgroundColorAttributeName: [[UIColor whiteColor] colorWithAlphaComponent:1]
     };
-    NSMutableAttributedString *title = [[NSMutableAttributedString alloc] initWithString:str attributes:attrs];
-    [title addAttributes:attrs range:NSMakeRange(0, card.number+1)];
+    NSAttributedString *title = [[NSAttributedString alloc] initWithString:str
+                                                                attributes:attrs];
     [cardButton setAttributedTitle:title forState:UIControlStateNormal];
 }
 
