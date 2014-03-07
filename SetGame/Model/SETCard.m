@@ -11,6 +11,14 @@
 
 - (NSInteger)match:(NSArray *)otherCards {
     NSInteger score = 0;
+    BOOL matched = NO;
+    SETCard *firstCard = [otherCards firstObject];
+    SETCard *secondCard = [otherCards lastObject];
+    
+    if (self.shape == firstCard.shape && self.shape == secondCard.shape) {
+        score = 1;
+        matched = YES;
+    }
     return score;
 }
 

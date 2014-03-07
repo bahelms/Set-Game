@@ -35,7 +35,7 @@
 
 
 - (NSArray *)alphas {
-    if (!_alphas) _alphas = @[@0.25, @0.5, @1];
+    if (!_alphas) _alphas = @[@0.3, @0.6, @1];
     return _alphas;
 }
 
@@ -74,7 +74,8 @@
         NSInteger cardButtonIndex = [self.cardButtons indexOfObject:cardButton];
         SETCard *card = [self.game cardAtIndex:cardButtonIndex];
         [self setButtonTitleFor:cardButton with:card];
-        [cardButton setAlpha:[self.alphas[card.alpha] floatValue]];
+        
+        if (card.isMatched) [cardButton setAlpha:0.5];
     }
 }
 
@@ -90,7 +91,6 @@
     NSDictionary *attrs = @{
         NSFontAttributeName: [UIFont preferredFontForTextStyle:UIFontTextStyleHeadline],
         NSForegroundColorAttributeName: [color colorWithAlphaComponent:alpha]
-        //NSBackgroundColorAttributeName: [[UIColor whiteColor] colorWithAlphaComponent:1]
     };
     NSAttributedString *title = [[NSAttributedString alloc] initWithString:str
                                                                 attributes:attrs];
