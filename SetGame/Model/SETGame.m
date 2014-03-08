@@ -57,7 +57,7 @@ static const int COST_TO_CHOOSE = 1;
             NSMutableArray *chosenCards = [self findChosenCards];
             if ( !([chosenCards count] < MATCH_LIMIT))
                 [self match:card withCards:chosenCards];
-            self.score -= COST_TO_CHOOSE;
+//            self.score -= COST_TO_CHOOSE;
             card.chosen = YES;
         }
     }
@@ -84,7 +84,8 @@ static const int COST_TO_CHOOSE = 1;
         card.matched = YES;
         for (SETCard *otherCard in chosenCards) { otherCard.matched = YES; }
     } else {
-        self.score -= MISMATCH_PENALTY - COST_TO_CHOOSE;
+//        self.score -= MISMATCH_PENALTY - COST_TO_CHOOSE;
+        self.score -= MISMATCH_PENALTY;
         for (SETCard *otherCard in chosenCards) { otherCard.chosen = NO; }
     }
 }
