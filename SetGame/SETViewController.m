@@ -66,6 +66,10 @@
     [self updateUI];
 }
 
+- (IBAction)touchDealAgainButton:(UIButton *)sender {
+    self.game = nil;
+    [self updateUI];
+}
 
 #pragma mark - View Stuff
 
