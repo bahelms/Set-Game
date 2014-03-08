@@ -11,7 +11,7 @@
 
 @interface SETGame : NSObject
 
-@property (nonatomic) NSInteger score;
+@property (nonatomic, readonly) NSInteger score;
 
 // Designated init
 - (instancetype)initWithCardCount:(NSUInteger)count

@@ -9,12 +9,14 @@
 
 @interface SETGame ()
 @property (nonatomic) NSMutableArray *cards;
+@property (nonatomic, readwrite) NSInteger score;
 @end
 
 @implementation SETGame
 
 #pragma mark - Init
 static const int MATCH_LIMIT = 2;
+static const int MATCH_BONUS = 4;
 static const int MISMATCH_PENALTY = 2;
 static const int COST_TO_CHOOSE = 1;
 
@@ -78,7 +80,7 @@ static const int COST_TO_CHOOSE = 1;
     NSInteger matchScore = [card match:chosenCards];
     
     if (matchScore) {
-        self.score += matchScore;
+        self.score += matchScore + MATCH_BONUS;
         card.matched = YES;
         for (SETCard *otherCard in chosenCards) { otherCard.matched = YES; }
     } else {

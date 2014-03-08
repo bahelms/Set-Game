@@ -100,7 +100,7 @@
 
 - (void)updateUI {
     [self drawCards];
-    self.scoreLabel.text = [NSString stringWithFormat:@"Score: %lu", (long)self.game.score];
+    self.scoreLabel.text = [NSString stringWithFormat:@"Score: %ld", (long)self.game.score];
 }
 
              
