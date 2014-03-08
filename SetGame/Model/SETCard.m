@@ -11,11 +11,11 @@
 
 - (NSInteger)match:(NSArray *)otherCards {
     NSInteger score = 0;
-    NSArray *properties = @[@"shape", @"alpha", @"color", @"number"];
+    NSArray *attributes = @[@"shape", @"alpha", @"color", @"number"];
     NSMutableArray *matches = [NSMutableArray array];
     
-    for (NSString *property in properties)
-        [matches addObject:@([self matchAttribute:property withOtherCards:otherCards])];
+    for (NSString *attribute in attributes)
+        [matches addObject:@([self matchAttribute:attribute withOtherCards:otherCards])];
   
     if (![matches containsObject:@(NO)]) score = 1;
     return score;
