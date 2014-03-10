@@ -16,12 +16,13 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Match history goes here" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jrk-HF-u8s">
-                                <rect key="frame" x="68" y="273" width="185" height="21"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="highlightedColor"/>
-                            </label>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" text="Match history goes here" translatesAutoresizingMaskIntoConstraints="NO" id="3hf-gv-8n3">
+                                <rect key="frame" x="0.0" y="-5" width="320" height="397"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
@@ -384,7 +385,7 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
-                        <outlet property="matchAlerts" destination="b8U-ht-Vx5" id="HUf-x9-IMr"/>
+                        <outlet property="matchAlertLabel" destination="b8U-ht-Vx5" id="rXG-aE-Oux"/>
                         <outlet property="scoreLabel" destination="jcO-gq-ekz" id="eDL-61-1dy"/>
                         <outletCollection property="cardButtons" destination="4hr-2S-dyh" id="P3Q-fu-eP9"/>
                         <outletCollection property="cardButtons" destination="t9h-uC-Ofu" id="566-AR-0gW"/>
