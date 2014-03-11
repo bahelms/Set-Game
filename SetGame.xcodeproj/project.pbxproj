@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		0B215BCA18C0D2FB0062C051 /* SETGame.m in Sources */ = {isa = PBXBuildFile; fileRef = 0B215BC918C0D2FB0062C051 /* SETGame.m */; };
+		0BEC125218CF26EB00AA51ED /* SETHistoryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0BEC125118CF26EB00AA51ED /* SETHistoryViewController.m */; };
 		0BECA54D18C0CD980018E5D1 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0BECA54C18C0CD980018E5D1 /* Foundation.framework */; };
 		0BECA54F18C0CD980018E5D1 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0BECA54E18C0CD980018E5D1 /* CoreGraphics.framework */; };
 		0BECA55118C0CD980018E5D1 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0BECA55018C0CD980018E5D1 /* UIKit.framework */; };
@@ -39,6 +40,8 @@
 /* Begin PBXFileReference section */
 		0B215BC818C0D2FB0062C051 /* SETGame.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SETGame.h; path = Model/SETGame.h; sourceTree = "<group>"; };
 		0B215BC918C0D2FB0062C051 /* SETGame.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SETGame.m; path = Model/SETGame.m; sourceTree = "<group>"; };
+		0BEC125018CF26EB00AA51ED /* SETHistoryViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SETHistoryViewController.h; sourceTree = "<group>"; };
+		0BEC125118CF26EB00AA51ED /* SETHistoryViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SETHistoryViewController.m; sourceTree = "<group>"; };
 		0BECA54918C0CD980018E5D1 /* SetGame.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SetGame.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0BECA54C18C0CD980018E5D1 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		0BECA54E18C0CD980018E5D1 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -123,6 +126,8 @@
 			children = (
 				0BECA58118C0CDA40018E5D1 /* Model */,
 				0BECA55E18C0CD980018E5D1 /* Main.storyboard */,
+				0BEC125018CF26EB00AA51ED /* SETHistoryViewController.h */,
+				0BEC125118CF26EB00AA51ED /* SETHistoryViewController.m */,
 				0BECA56118C0CD980018E5D1 /* SETViewController.h */,
 				0BECA56218C0CD980018E5D1 /* SETViewController.m */,
 				0BECA56418C0CD980018E5D1 /* Images.xcassets */,
@@ -281,6 +286,7 @@
 				0BECA56318C0CD980018E5D1 /* SETViewController.m in Sources */,
 				0BECA58418C0CDF20018E5D1 /* SETCard.m in Sources */,
 				0BECA55D18C0CD980018E5D1 /* SETAppDelegate.m in Sources */,
+				0BEC125218CF26EB00AA51ED /* SETHistoryViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

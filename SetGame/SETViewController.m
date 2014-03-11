@@ -6,6 +6,7 @@
 //  Copyright (c) 2014 Helms Industries. All rights reserved.
 //
 #import "SETViewController.h"
+#import "SETHistoryViewController.h"
 #import "SETGame.h"
 
 @interface SETViewController ()
@@ -43,7 +44,7 @@
 
 @synthesize colors = _colors;
 - (NSArray *)colors {
-    if (!_colors) _colors = @[[UIColor blueColor], [UIColor greenColor], [UIColor redColor]];
+    if (!_colors) _colors = @[[UIColor blueColor], [UIColor purpleColor], [UIColor redColor]];
     return _colors;
 }
 
@@ -77,14 +78,16 @@
 - (IBAction)touchCardButton:(UIButton *)sender {
     int index = [self.cardButtons indexOfObject:sender];
     SETCard *card = [self.game cardAtIndex:index];
-    NSMutableAttributedString *title = [[NSMutableAttributedString alloc] init];
+    self.matchAlertLabel.attributedText = nil;
     
     [self.game chooseCardAtIndex:index];
-    if (card.isChosen) {
-        title = [self getCardTitleFor:card];
+    if (card.isChosen)
+        self.matchAlertLabel.attributedText = [self getCardTitleFor:card];
+    
+    if ([self.chosenCards containsObject:card])
+        [self.chosenCards removeObject:card];
+    else
         [self.chosenCards addObject:card];
-    }
-    self.matchAlertLabel.attributedText = title;
     
     [self updateUI];
 }
@@ -92,8 +95,11 @@
 
 - (IBAction)touchDealAgainButton:(UIButton *)sender {
     self.game = nil;
+    self.matchAlertLabel.attributedText = nil;
+    self.chosenCards = nil;
     [self updateUI];
 }
+
 
 #pragma mark - View Stuff
 
@@ -134,8 +140,7 @@
 
 - (void)updateUI {
     [self drawCards];
-    self.gameScore = self.game.score;
-    self.scoreLabel.text = [NSString stringWithFormat:@"Score: %d", self.gameScore];
+    self.scoreLabel.text = [NSString stringWithFormat:@"Score: %d", self.game.score];
     
     if ([self.chosenCards count] == 3) {
         [self recordMatchHistory];
@@ -145,21 +150,18 @@
 
 
 - (void)recordMatchHistory {
-    NSString *str = [NSString string];
-    NSMutableAttributedString *match = [[NSMutableAttributedString alloc] init];
+    NSString *str = ([[self.chosenCards firstObject] isMatched]) ? @"Set!  " : @"No Set!  ";
     NSMutableAttributedString *space = [[NSMutableAttributedString alloc] initWithString:@" | "
                                                                               attributes:nil];
-    if (self.game.score > self.gameScore)
-        str = @"Set! ";
-    else if (self.game.score < self.gameScore)
-        str = @"No Set! ";
+    NSMutableAttributedString *match = [[NSMutableAttributedString alloc] initWithString:str
+                                                                              attributes:nil];
     
-    [match appendAttributedString:[[NSMutableAttributedString alloc] initWithString:str
-                                                                         attributes:nil]];
-    for (SETCard *card in self.chosenCards) {
-        [match appendAttributedString:[self getCardTitleFor:card]];
+    for (int i=0; i < 2; i++) {
+        [match appendAttributedString:[self getCardTitleFor:self.chosenCards[i]]];
         [match appendAttributedString:space];
     }
+    [match appendAttributedString:[self getCardTitleFor:[self.chosenCards lastObject]]];
+    
     [self.matchHistory addObject:match];
     self.chosenCards = nil;
 }
@@ -174,6 +176,18 @@
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+
+#pragma mark - Segue
+
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+    if ([segue.identifier isEqualToString:@"Set Game History"]) {
+        if ([segue.destinationViewController isKindOfClass:[SETHistoryViewController class]]) {
+            SETHistoryViewController *historyVC = segue.destinationViewController;
+            historyVC
+        }
+    }
 }
 
 @end
