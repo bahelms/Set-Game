@@ -5,6 +5,5 @@ Implementation of the Set card game.
 
 TODO
 ----
-* Fix scoring system
-* Alter card state for chosen cards somehow
+* Alter cosmetics of match history text
 * Draw cards instead of using attributed strings

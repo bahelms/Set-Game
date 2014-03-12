@@ -13,7 +13,12 @@
 
 @implementation SETHistoryViewController
 
-- (void)setMatchHistory:(NSAttributedString *)matchHistory {
+- (void)setMatchHistory:(NSMutableAttributedString *)matchHistory {
+    if ([matchHistory length] == 0)
+        matchHistory = [[NSMutableAttributedString alloc] initWithString:@"Zero matches!"];
+    
+//    UIFont fontWithName:n size:<#(CGFloat)#>
+//    matchHistory attribute:<#(NSString *)#> atIndex:<#(NSUInteger)#> effectiveRange:<#(NSRangePointer)#>
     _matchHistory = matchHistory;
     if (self.view.window) [self updateUI];
 }
@@ -24,7 +29,8 @@
 }
 
 - (void)updateUI {
-    self.matchHistoryTextView.textStorage = self.matchHistory;
+    self.matchHistoryTextView.attributedText = self.matchHistory;
+    self.matchHistoryTextView.textAlignment = NSTextAlignmentCenter;
 }
 
 @end

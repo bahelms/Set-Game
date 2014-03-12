@@ -96,6 +96,7 @@
 - (IBAction)touchDealAgainButton:(UIButton *)sender {
     self.game = nil;
     self.matchAlertLabel.attributedText = nil;
+    self.matchHistory = nil;
     self.chosenCards = nil;
     [self updateUI];
 }
@@ -173,19 +174,20 @@
 }
 
 
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
-}
-
-
 #pragma mark - Segue
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    if ([segue.identifier isEqualToString:@"Set Game History"]) {
+    if ([segue.identifier isEqualToString:@"Set Match History"]) {
         if ([segue.destinationViewController isKindOfClass:[SETHistoryViewController class]]) {
             SETHistoryViewController *historyVC = segue.destinationViewController;
-            historyVC
+            NSMutableAttributedString *historyStr = [[NSMutableAttributedString  alloc] init];
+            
+            for (NSAttributedString *match in self.matchHistory) {
+                NSAttributedString *newline = [[NSAttributedString alloc] initWithString:[NSString stringWithFormat:@"\n"]];
+                [historyStr appendAttributedString:match];
+                [historyStr appendAttributedString:newline];
+            }
+            historyVC.matchHistory = historyStr;
         }
     }
 }

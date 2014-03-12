@@ -9,6 +9,6 @@
 
 @interface SETHistoryViewController : UIViewController
 
-@property (nonatomic) NSAttributedString *matchHistory;
+@property (nonatomic, copy) NSMutableAttributedString *matchHistory;
 
 @end
