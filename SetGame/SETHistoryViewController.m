@@ -17,8 +17,6 @@
     if ([matchHistory length] == 0)
         matchHistory = [[NSMutableAttributedString alloc] initWithString:@"Zero matches!"];
     
-//    UIFont fontWithName:n size:<#(CGFloat)#>
-//    matchHistory attribute:<#(NSString *)#> atIndex:<#(NSUInteger)#> effectiveRange:<#(NSRangePointer)#>
     _matchHistory = matchHistory;
     if (self.view.window) [self updateUI];
 }
