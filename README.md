@@ -10,5 +10,5 @@ TODO
 
 #### Images
 ![Game View](https://raw.github.com/bahelms/Set-Game/screenshots/Set_view1.png)
-![Game View](https://raw.github.com/bahelms/Set-Game/screenshots/Set_view2.png)
 ![Game View](https://raw.github.com/bahelms/Set-Game/screenshots/Set_view3.png)
+![Game View](https://raw.github.com/bahelms/Set-Game/screenshots/Set_view2.png)
